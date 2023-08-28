@@ -8,6 +8,7 @@ import Login from './pages/login'
 import UserLog from './pages/userLog'
 import Header from './components/header';
 import Footer from './components/footer';
+import "./style/global.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
