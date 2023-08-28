@@ -14,6 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
+      <div className='page-content'>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -21,6 +22,7 @@ root.render(
         <Route path='/userLog' element={<UserLog />} />
       </Routes>
       <Footer />
+      </div>
     </Router>
   </React.StrictMode>
 );
