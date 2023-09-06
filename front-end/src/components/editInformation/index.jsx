@@ -40,7 +40,7 @@ function EditInfo ({setStartEdit}) {
     }
 
     return (
-        <form className="form-edit">
+        <form className="form-edit"> 
             <h2>Edit user info</h2>
             <div className="input-edit">
                 <label htmlFor="username">User name :</label>
