@@ -9,11 +9,17 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm () {
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errorLoginMessage, setErrorLoginMessage] = useState(false);
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [isChecked, setIsChecked] = useState(false);
+    
+
+    const checkHandler = () => {
+        setIsChecked(!isChecked)
+    }
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -43,6 +49,11 @@ function LoginForm () {
         catch(error){
             console.log(error)
         }
+        if (isChecked === true) {
+            localStorage.clear()
+            localStorage.setItem('email', email)
+            console.log(localStorage)
+        }
     }
 
     let errorMessage = null;
@@ -54,7 +65,11 @@ function LoginForm () {
        <form onSubmit={onSubmit}>
         <div className="input-wrapper">
             <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required/>
+            <input type="email" id="email" 
+            value={email || localStorage.email}
+            onChange={(e) => setEmail(e.target.value)} 
+            required
+            />
         </div>
         <div className="input-wrapper">
             <label htmlFor="password">Password</label>
@@ -62,7 +77,7 @@ function LoginForm () {
         </div>
         <div className="input-remember">
             <label htmlFor="remember-me">Remember me</label>
-            <input type="checkbox" id="remember-me" /> 
+            <input type="checkbox" id="remember-me" onChange={checkHandler} /> 
         </div>
         <button className="sign-in-button">Sign In</button>
         {errorMessage}

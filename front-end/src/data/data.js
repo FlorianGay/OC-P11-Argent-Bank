@@ -27,7 +27,7 @@ export async function userProfile(token) {
     return await response.json();
 }
 
-export async function userEditProfile({token, username}) {
+export async function userEditProfile(token, username) {
     const response = await fetch("http://localhost:3001/api/v1/user/profile", {
         method: "PUT",
         headers : {

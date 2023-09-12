@@ -13,16 +13,14 @@ function EditInfo ({setStartEdit}) {
     const firstName = useSelector((state) => state.user.dataUser.firstName)
     const lastName = useSelector((state) => state.user.dataUser.lastName)
 
-
-
     async function onSave(e) {
         e.preventDefault();
         console.log(token)
         try {
-            const response = await userEditProfile({
-                userName: username,
-                token : token,
-            })
+            const response = await userEditProfile(
+                 token,
+                 username,
+            )
             console.log(response);
             if (response.status === 200) {
                 dispatch(setUser(response.body))

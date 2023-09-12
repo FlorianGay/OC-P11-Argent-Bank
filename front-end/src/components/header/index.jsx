@@ -16,7 +16,7 @@ function Header() {
         dispatch(setLogin(false));
         dispatch(setToken(null));
         dispatch(setUser(null));
-        navigate("/login");
+        navigate("/");
     }
 
     if (isLogged === false ) {
