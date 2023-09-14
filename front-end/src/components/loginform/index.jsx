@@ -16,7 +16,6 @@ function LoginForm () {
     const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(false);
     
-
     const checkHandler = () => {
         setIsChecked(!isChecked)
     }
@@ -29,6 +28,7 @@ function LoginForm () {
                 password: password,
             })
             console.log(response);
+            console.log(email)
             if (response.status === 200 ) {
                 dispatch(setLogin(true));
                 dispatch(setToken(response.body.token))
@@ -36,7 +36,6 @@ function LoginForm () {
                 const data = await profile.body
                 console.log(data)
                 dispatch(setUser(data))
-
                 navigate("/userLog")
             } 
 
@@ -52,7 +51,6 @@ function LoginForm () {
         if (isChecked === true) {
             localStorage.clear()
             localStorage.setItem('email', email)
-            console.log(localStorage)
         }
     }
 
@@ -66,7 +64,7 @@ function LoginForm () {
         <div className="input-wrapper">
             <label htmlFor="email">E-mail</label>
             <input type="email" id="email" 
-            value={email || localStorage.email}
+            value={ email ? email : localStorage.getItem('email')}
             onChange={(e) => setEmail(e.target.value)} 
             required
             />
