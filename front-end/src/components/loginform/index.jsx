@@ -14,11 +14,6 @@ function LoginForm () {
     const [errorLoginMessage, setErrorLoginMessage] = useState(false);
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [isChecked, setIsChecked] = useState(false);
-    
-    const checkHandler = () => {
-        setIsChecked(!isChecked)
-    }
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -48,10 +43,7 @@ function LoginForm () {
         catch(error){
             console.log(error)
         }
-        if (isChecked === true) {
-            localStorage.clear()
-            localStorage.setItem('email', email)
-        }
+        
     }
 
     let errorMessage = null;
@@ -64,7 +56,6 @@ function LoginForm () {
         <div className="input-wrapper">
             <label htmlFor="email">E-mail</label>
             <input type="email" id="email" 
-            value={ email ? email : localStorage.getItem('email')}
             onChange={(e) => setEmail(e.target.value)} 
             required
             />
@@ -75,7 +66,7 @@ function LoginForm () {
         </div>
         <div className="input-remember">
             <label htmlFor="remember-me">Remember me</label>
-            <input type="checkbox" id="remember-me" onChange={checkHandler} /> 
+            <input type="checkbox" id="remember-me"  /> 
         </div>
         <button className="sign-in-button">Sign In</button>
         {errorMessage}
