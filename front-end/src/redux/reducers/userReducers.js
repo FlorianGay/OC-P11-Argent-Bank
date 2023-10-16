@@ -2,7 +2,7 @@ import { SET_LOGIN, SET_TOKEN, SET_USER } from "../actions/userActions";
 
 
 const initialState = {
-    dataUser: null,
+    dataUser: '',
     token: null,
     isLogin: false,
 };
